@@ -1,0 +1,16 @@
+<azkaban-users>
+$(
+  for entry in `echo $AZKABAN_USERS|tr ';' ' '`; do
+    user=`echo $entry|cut -f1 -d:`
+    pass=`echo $entry|cut -f2 -d:`
+    role=`echo $entry|cut -f3 -d:`
+    echo \	\<user username="$user" password="$pass" roles="$role"/\>
+  done
+  echo
+  for entry in `echo $AZKABAN_ROLES|tr ';' ' '`; do
+    role=`echo $entry|cut -f1 -d:`
+    perm=`echo $entry|cut -f2 -d:`
+    echo \	\<role name="$role" permissions="$perm"/\>
+  done
+  )
+</azkaban-users>

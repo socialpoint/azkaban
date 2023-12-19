@@ -132,7 +132,7 @@ subprojects {
     apply plugin: 'net.ltgt.errorprone'
 
     // Set the same version for all sub-projects to root project version
-    version = rootProject.version
+    version = '3.70.3'
 
     configurations.errorprone {
         dependencies {

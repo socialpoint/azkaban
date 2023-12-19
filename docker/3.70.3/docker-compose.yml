@@ -1,0 +1,49 @@
+# this file is only user for local / dev purposes, prod environment uses only the project python build
+version: "3"
+
+services:
+  mysql:
+    image: mysql:8.2.0
+    platform: linux/amd64
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+
+  azkaban_web:
+    build: .
+    platform: linux/amd64
+    command: web
+    ports:
+        - "80:80"
+    environment:
+        - AZKABAN_USERS="azkaban:azkaban"
+        - AZKABAN_LABEL=azkaban-test.pro.sp.plaicos.net
+        - AZKABAN_TIMEZONE=Europe/Madrid
+        - AZKABAN_MYSQL_HOST=mysql
+        - AZKABAN_MYSQL_DATABASE=azkaban
+        - AZKABAN_MYSQL_USER=root
+        - AZKABAN_MYSQL_PASSWORD=root
+        #         - AZKABAN_MAIL_SENDER
+        #         - AZKABAN_MAIL_HOST
+        #         - AZKABAN_MAIL_USER
+        #         - AZKABAN_MAIL_PASSWORD
+        #         - AZKABAN_MAIL_TLS
+
+  azkaban_executor:
+    build: .
+    platform: linux/amd64
+    command: executor
+    environment:
+        - AZKABAN_USERS="azkaban:azkaban"
+        - AZKABAN_LABEL=azkaban-test.pro.sp.plaicos.net
+        - AZKABAN_TIMEZONE=Europe/Madrid
+        - AZKABAN_MYSQL_HOST=mysql
+        - AZKABAN_MYSQL_DATABASE=azkaban
+        - AZKABAN_MYSQL_USER=root
+        - AZKABAN_MYSQL_PASSWORD=root
+        #         - AZKABAN_MAIL_SENDER
+        #         - AZKABAN_MAIL_HOST
+        #         - AZKABAN_MAIL_USER
+        #         - AZKABAN_MAIL_PASSWORD
+        #         - AZKABAN_MAIL_TLS
