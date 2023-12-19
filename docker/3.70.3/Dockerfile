@@ -1,6 +1,6 @@
 FROM openjdk:8 as builder
 ENV CHANGE 1
-ENV VERSION 3.70.2
+ENV VERSION 3.70.3
 
 RUN git clone https://github.com/sp-roger-bosch/azkaban
 WORKDIR /azkaban
@@ -16,7 +16,7 @@ ENV TINI_VERSION v0.18.0
 
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
-RUN apt-get update && apt-get install -y openjdk-8-jre curl openssh-client python-pip jq && apt-get clean
+RUN apt-get update && apt-get install -y openjdk-8-jre curl openssh-client python-pip jq default-mysql-client && apt-get clean
 RUN pip install awscli
 
 COPY --from=builder /opt/azkaban /opt/azkaban
