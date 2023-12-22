@@ -16,7 +16,7 @@ docker exec -ti 3703-azkaban_executor-1 /bin/bash
 Create the default database with the required tables.
 ```
 echo "CREATE DATABASE azkaban;" | mysql -hmysql -proot
-mysql -hmysql -proot azkaban </opt/azkaban/sql/create-all-sql-3.71.0-2-g7365020d.sql
+mysql -hmysql -proot azkaban </opt/azkaban/sql/create-all-sql-3.70.3.sql
 ```
 
 Activate the executor.
