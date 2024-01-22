@@ -18,7 +18,7 @@ services:
         - "80:80"
     environment:
         - AZKABAN_USERS="azkaban:azkaban"
-        - AZKABAN_LABEL=azkaban-test.pro.sp.plaicos.net
+        - AZKABAN_LABEL=label
         - AZKABAN_TIMEZONE=Europe/Madrid
         - AZKABAN_MYSQL_HOST=mysql
         - AZKABAN_MYSQL_DATABASE=azkaban
@@ -36,7 +36,7 @@ services:
     command: executor
     environment:
         - AZKABAN_USERS="azkaban:azkaban"
-        - AZKABAN_LABEL=azkaban-test.pro.sp.plaicos.net
+        - AZKABAN_LABEL=label
         - AZKABAN_TIMEZONE=Europe/Madrid
         - AZKABAN_MYSQL_HOST=mysql
         - AZKABAN_MYSQL_DATABASE=azkaban
